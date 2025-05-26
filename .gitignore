@@ -46,3 +46,6 @@ bin/
 *.pem
 *.key
 *.crt
+
+# Configuration files
+auth5.yml

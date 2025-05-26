@@ -1,0 +1,69 @@
+# Site configuration
+site:
+  name: "Auth5" # Your application name
+  url: "http://localhost:3000" # Frontend URL
+  api_url: "http://localhost:3031" # Backend API URL
+
+# Server configuration
+server:
+  host: "127.0.0.1" # Server host (use 0.0.0.0 for all interfaces)
+  port: 3031 # Server port
+
+# Swagger/OpenAPI documentation
+swagger:
+  web: true # Enable Swagger UI
+  path: "/swagger" # Swagger UI path
+
+# Stripe payment configuration
+stripe:
+  secret_key: "sk_test_..." # Your Stripe secret key
+  webhook:
+    secret: "whsec_..." # Stripe webhook signing secret
+
+# MaxMind GeoIP configuration
+maxmind:
+  geolite2:
+    country: "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=YOUR_LICENSE_KEY&suffix=tar.gz"
+
+# Sentry error tracking
+sentry:
+  dsn: "https://..." # Your Sentry DSN
+
+# Email configuration
+emails:
+  - nickname: "noreply" # Email configuration nickname
+    smtp:
+      name: "Auth5" # SMTP sender name
+      from: "noreply@example.com" # SMTP sender email
+      username: "noreply@example.com" # SMTP username
+      password: "your-smtp-password" # SMTP password
+      host: "smtp.example.com" # SMTP host
+      port: 587 # SMTP port
+      tls: true # Enable TLS
+
+# CORS configuration
+cors:
+  origins:
+    - "http://localhost:3000" # Frontend development URL
+    - "http://localhost:3031" # Backend development URL
+    - "https://app.example.com" # Production frontend URL
+    - "https://api.example.com" # Production backend URL
+
+# Database configuration
+database:
+  mongodb:
+    uri: "mongodb://localhost:27017/auth5" # MongoDB connection URI
+    db_name: "auth5" # MongoDB database name
+  badger:
+    dir: "./data/Badger" # BadgerDB directory
+
+# OAuth providers configuration
+oauth:
+  google:
+    client_id: "your-google-client-id" # Google OAuth client ID
+    client_secret: "your-google-client-secret" # Google OAuth client secret
+    redirect_url: "http://localhost:3031/auth/google/callback" # Google OAuth callback URL
+  github:
+    client_id: "your-github-client-id" # GitHub OAuth client ID
+    client_secret: "your-github-client-secret" # GitHub OAuth client secret
+    redirect_url: "http://localhost:3031/auth/github/callback" # GitHub OAuth callback URL
